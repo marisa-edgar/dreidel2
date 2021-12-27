@@ -9,7 +9,7 @@ let player1 ="";
 let player2 ="";
 
 let spinDreidel =function () {
-  return Math.floor(4*.random())+1;
+  return Math.floor(4*Math.random())+1;
 }
 
 Player.prototype.spinOne = function() {
@@ -22,13 +22,42 @@ Player.prototype.spinOne = function() {
   }
 }
 
+Player.prototype.spinOne = function() {
+  if (this.spin === 2) {
+    this.tempScore = 0;
+    alert( this.playerName + "you got hay, you get half the pot")
 
-Player.prototype.hold = function () {
-  this.totalScore += this.tempScore;
-  this.tempScore = 0;
-
-  alert(this.playerName + ",your turn is over");
+  } else {
+    this.tempScore += this.spin;
+  }
 }
+
+Player.prototype.spinOne = function() {
+  if (this.spin === 3) {
+    this.tempScore = 0;
+    alert( this.playerName + "you got shin, you put one back in the pot")
+
+  } else {
+    this.tempScore += this.spin;
+  }
+}
+Player.prototype.spinOne = function() {
+  if (this.spin === 4) {
+    this.tempScore = 0;
+    alert( this.playerName + "you got gimmel, you take the whole pot")
+
+  } else {
+    this.tempScore += this.spin;
+  }
+}
+
+
+// Player.prototype.hold = function () {
+//   this.totalScore += this.tempScore;
+//   this.tempScore = 0;
+
+//   alert(this.playerName + ",your turn is over");
+// }
 
 
 // Player.prototype.winnerCheck = function () {
@@ -94,20 +123,20 @@ $(document).ready(function() {
     $("#round-total-2").text(player2.tempScore);
   });
 
-  $("button#player1-hold").click(function(event){
-    player1.hold();
-    $("#total-score-1").text(player1.totalScore);
-    $("#round-total-1").empty();
-    $("#dreidel-spin-1").empty();
-    player1.winnerCheck();
-  });
+  // $("button#player1-hold").click(function(event){
+  //   player1.hold();
+  //   $("#total-score-1").text(player1.totalScore);
+  //   $("#round-total-1").empty();
+  //   $("#dreidel-spin-1").empty();
+  //   player1.winnerCheck();
+  // });
 
-  $("button#player2-hold").click(function(event){
-    player2.hold();
-    $("#total-score-2").text(player2.totalScore);
-    $("#round-total-2").empty();
-    $("#dreidel-spin-2").empty();
-    player2.winnerCheck();
-  });
+  // $("button#player2-hold").click(function(event){
+  //   player2.hold();
+  //   $("#total-score-2").text(player2.totalScore);
+  //   $("#round-total-2").empty();
+  //   $("#dreidel-spin-2").empty();
+  //   player2.winnerCheck();
+  // });
 
 });
